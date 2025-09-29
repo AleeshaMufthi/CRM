@@ -36,9 +36,15 @@ for (const filePath of modelsFiles) {
 const app = require('./app');
 
 
-app.set('port', process.env.PORT || 8888);
+app.set('port', process.env.PORT || 3000);
+
+// if (process.env.NODE_ENV !== "production") {
+//   app.listen(3000, () => console.log("Local server → http://localhost:3000"));
+// }
 const server = app.listen(app.get('port'), () => {
   console.log(`Express running → On PORT : ${server.address().port}`);
 });
+
+// module.exports = app;
 
 

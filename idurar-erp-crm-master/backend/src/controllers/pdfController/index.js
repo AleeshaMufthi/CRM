@@ -1,5 +1,5 @@
 const pug = require('pug');
-const fs = require('fs');
+// const fs = require('fs');
 const moment = require('moment');
 let pdf = require('html-pdf');
 const { listAllSettings, loadSettings } = require('@/middlewares/settings');
@@ -22,9 +22,9 @@ exports.generatePdf = async (
     const { targetLocation } = info;
 
     // if PDF already exists, then delete it and create a new PDF
-    if (fs.existsSync(targetLocation)) {
-      fs.unlinkSync(targetLocation);
-    }
+    // if (fs.existsSync(targetLocation)) {
+    //   fs.unlinkSync(targetLocation);
+    // }
 
     // render pdf html
 

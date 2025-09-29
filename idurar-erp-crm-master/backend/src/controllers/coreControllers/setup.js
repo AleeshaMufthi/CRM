@@ -1,7 +1,7 @@
 require('dotenv').config({ path: '.env' });
 require('dotenv').config({ path: '.env.local' });
 const { globSync } = require('glob');
-const fs = require('fs');
+// const fs = require('fs');
 const { generate: uniqueId } = require('shortid');
 
 const mongoose = require('mongoose');
@@ -60,24 +60,24 @@ const setup = async (req, res) => {
 
   const settingsFiles = globSync('./src/setup/defaultSettings/**/*.json');
 
-  for (const filePath of settingsFiles) {
-    const file = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  // for (const filePath of settingsFiles) {
+  //   const file = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-    const settingsToUpdate = {
-      idurar_app_email: email,
-      idurar_app_company_email: email,
-      idurar_app_timezone: timezone,
-      idurar_app_country: country,
-      idurar_app_language: language || 'en_us',
-    };
+  //   const settingsToUpdate = {
+  //     idurar_app_email: email,
+  //     idurar_app_company_email: email,
+  //     idurar_app_timezone: timezone,
+  //     idurar_app_country: country,
+  //     idurar_app_language: language || 'en_us',
+  //   };
 
-    const newSettings = file.map((x) => {
-      const settingValue = settingsToUpdate[x.settingKey];
-      return settingValue ? { ...x, settingValue } : { ...x };
-    });
+  //   const newSettings = file.map((x) => {
+  //     const settingValue = settingsToUpdate[x.settingKey];
+  //     return settingValue ? { ...x, settingValue } : { ...x };
+  //   });
 
-    settingData.push(...newSettings);
-  }
+  //   settingData.push(...newSettings);
+  // }
 
   await Setting.insertMany(settingData);
 
